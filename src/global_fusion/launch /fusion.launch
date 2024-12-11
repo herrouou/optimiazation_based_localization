@@ -1,0 +1,52 @@
+<launch>
+
+    <include file="$(find data_publish)/launch/data_publish.launch"/>
+
+
+
+
+    <!--publish transform-->
+    <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="map_to_utm" args="0 0 0 0 0 0 map utm" /> -->
+    <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="odom_to_map" args="0 0 0 0 0 0 map odom" />
+    <node pkg="tf2_ros" type="static_transform_publisher" name="vio_odom_to_base_link" args="0 0 0 0 0 0 vio_odom base_link" /> -->
+
+
+
+
+
+
+
+
+    <node name="global_fusion_node" pkg="global_fusion" type="global_fusion_node" output="screen">
+        <rosparam file="$(find global_fusion)/config/global_fusion.yaml" command="load"/>
+    </node>
+
+    <node pkg="path_publish" type="path_publish" name="path_publish" output="screen"/>
+
+
+    <arg name="rviz_config" default="$(find global_fusion)/rviz/1.rviz"/>
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(arg rviz_config)" output="screen"/>
+    
+
+</launch>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

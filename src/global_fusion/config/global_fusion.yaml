@@ -1,0 +1,7 @@
+t_var: 5
+q_var: 1
+var: 5
+vio_loss_para: 5
+gps_loss_para: 150
+windows_size: 500
+max_iterations: 10
